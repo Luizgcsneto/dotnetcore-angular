@@ -1,0 +1,47 @@
+<h2>Time Info</h2>
+
+<hr>
+
+<form #timeForm="ngForm">
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Nome:</label>
+    <div class="col-sm-10">
+        <input [(ngModel)]="time.nome" required name="nome" #timeNome="ngModel" type="text" [ngClass]="{'is-invalid': timeNome.invalid}" class="form-control">
+
+        <div class="invalid-feedback">
+          <span>Nome do time é obrigatório</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Cores:</label>
+    <div class="col-sm-10">
+        <input [(ngModel)]="time.cores" required name="cores" #timeCores="ngModel" type="text" [ngClass]="{'is-invalid': timeCores.invalid}" class="form-control">
+
+        <div class="invalid-feedback">
+          <span>Cores do time é obrigatório</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Estado:</label>
+    <div class="col-sm-10">
+        <input [(ngModel)]="time.estado" required name="estado" #timeEstado="ngModel" [ngClass]="{'is-invalid': timeEstado.invalid}" class="form-control">
+
+        <div class="invalid-feedback">
+          <span>Estado do Time é obrigatório</span>
+        </div>
+    </div>
+  </div>
+
+  <button [disabled]="timeForm.invalid" (click)="save()" class="btn btn-primary mr-2">Save</button>
+  <button [routerLink]="['/times']" class="btn btn-secondary">Back</button>
+
+
+</form>
+
+
+

@@ -1,0 +1,111 @@
+<h3>Times!</h3>
+
+<!--
+
+<div class="form-group row">
+
+  <label class="col-sm-2 col-form-label">Filter By:</label>
+
+  <div class="col-sm-10">
+      <input [(ngModel)]="filtro" class="form-control">
+  </div>
+
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Escudo</th>
+      <th>Nome</th>
+      <th>Cores</th>
+      <th>Estado</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let time of filteredTimes">
+      <td><img [src]="time.imagem" width="40" height="40"></td>
+      <td>{{time.nome}}</td>
+      <td>{{time.cores}}</td>
+      <td>{{time.estado}}</td>
+      <td>
+        <a [routerLink]="['/times/info', time.id]"  class="btn btn-primary">Editar</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+-->
+
+
+<div class="container p-5" *ngIf="visibilidadeTabela">
+  <div class="border border-light rounded p-5" >
+    <div>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="ExibirFormularioCadastro()">
+      Novo Time
+    </button>
+  </div>
+  <hr>
+
+  <table class="table table-striped table-hover table-sm" *ngIf="times">
+    <tr class="thead-light">
+      <th>Nome</th>
+      <th>Estado</th>
+      <th>Cores</th>
+
+    </tr>
+
+    <tr *ngFor="let time of times">
+      <td>{{time.nome}}</td>
+      <td>{{time.estado}}</td>
+      <td>{{time.cores}}</td>
+      <td>
+        <button type="button" class="btn btn-sm btn-outline-info" (click)="ExibirFormularioAtualizacao(time.id)">Atualizar</button> |
+        <button type="button" class="btn btn-sm btn-outline-danger" (click)="Excluir(time.id)">Excluir</button>
+      </td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+
+<div class="container p-5" *ngIf="visibilidadeFormulario">
+  <div class="row">
+    <div class="col-6 bourd bourd-light rounded p-5 shadow" *ngIf="formulario">
+      <h6>{{tituloFormulario}}</h6>
+      <hr>
+      <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()">
+
+        <div class="formGroup">
+          <label>Nome:</label>
+          <input type="text" class="form-control form-control-sm" formControlName="nome">
+        </div>
+
+        <div class="formGroup">
+          <label>Estado:</label>
+          <input type="text" class="form-control form-control-sm" formControlName="estado">
+        </div>
+
+        <div class="formGroup">
+          <label>Cores:</label>
+          <input type="text" class="form-control form-control-sm" formControlName="cores">
+        </div>
+        <br>
+
+        <div class="container">
+          <div class="row">
+            <div>
+              <button type="submit" class="btn btn-sm btn-outline-secondary">Enviar</button>
+            </div>
+
+            <div class="pl-1">
+              <button type=button class="btn btn-sm btn-light" (click)="Voltar()">Voltar</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
